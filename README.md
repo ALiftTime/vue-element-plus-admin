@@ -1,233 +1,152 @@
-<div align="center"> <a href="https://github.com/kailong321200875/vue-element-plus-admin"> <img width="100" src="./public/logo.png"> </a> <br> <br>
+# 介绍
 
-[![license](https://img.shields.io/github/license/kailong321200875/vue-element-plus-admin.svg)](LICENSE)
+## 目录结构
 
-<h1>vue-element-plus-admin</h1>
-</div>
-
-**English** | [中文](./README.zh-CN.md)
-
-## Introduction
-
-vue-element-plus-admin is a free and open source middle and background template based on `element-plus`. Developed using the latest mainstream technologies such as `vue3`, `vite2` and `typescript`, the out of the box middle and background front-end solution can be used as the starting template of the project and learning reference. And always pay attention to the latest technological trends and update them as soon as possible.
-
-vue-element-plus-admin is positioned as a background integration scheme, which is not suitable for secondary development as a basic template. Because it integrates many functions that you may not use, it will cause a lot of code redundancy. If your project doesn't pay attention to this problem, you can also directly carry out secondary development based on it.
-
-If you need a basic template, please switch to the `tempalte` branch. `Tempalte` simply integrates some common layout functions such as layout and dynamic menu, which is more suitable for developers to carry out secondary development.
-
-## Feature
-
-- **State of The Art Development**：Use front-end front-end technology development such as Vue3/vite2
-- **TypeScript**: Application-level JavaScript language
-- **Theming**: Configurable themes
-- **International**：Built-in complete internationalization program
-- **Mock Server** Built-in mock data scheme
-- **Authority** Built-in complete dynamic routing permission generation scheme.
-- **Component** Multiple commonly used components are encapsulated twice
-- **Examples** Built-in rich examples
-
-## Preview
-
-- [vue-element-plus-admin](https://element-plus-admin.cn/) - Full version of the github site
-- [vue-element-plus-admin](https://kailong110120130.gitee.io/vue-element-plus-admin) - Full version of the gitee site
-
-account: **admin/admin test/test**
-
-`admin` account is used to simulate the control permission of the server, and render whatever the server returns
-
-`test` account is used to simulate the front-end control authority. The server only returns the menu key to be displayed, and the front-end performs matching rendering
-
-## Documentation
-
-[Document Github](https://element-plus-admin-doc.cn/)
-
-[Document Gitee](https://kailong110120130.gitee.io/vue-element-plus-admin-doc)
-
-## Preparation
-
-- [node](http://nodejs.org/) and [git](https://git-scm.com/) - Project development environment
-- [Vite](https://vitejs.dev/) - Familiar with vite features
-- [Vue3](https://v3.vuejs.org/) - Familiar with Vue basic syntax
-- [TypeScript](https://www.typescriptlang.org/) - Familiar with the basic syntax of `TypeScript`
-- [Es6+](http://es6.ruanyifeng.com/) - Familiar with es6 basic syntax
-- [Vue-Router-Next](https://next.router.vuejs.org/) - Familiar with the basic use of vue-router
-- [Element-Plus](https://element-plus.org/) - Familiar with the basic use of element-plus
-- [Mock.js](https://github.com/nuysoft/Mock) - mockjs basic syntax
-
-## Install and use
-
-- Get the project code
-
-```bash
-git clone https://github.com/kailong321200875/vue-element-plus-admin.git
+```text
+  .
+  ├── mock   # 自定义 mock 数据及配置
+  ├── public # 静态资源
+  ├── src    # 项目代码
+  │   ├── api           # api 接口管理
+  │   ├── assets        # 静态文件
+  │   ├── config        # 配置后台主题, 和配置常量
+  │   ├── hooks         # hooks
+  │   ├── layout        # layout
+  │   ├── plugins       # plugins
+  │   ├── router        # 路由
+  │   ├── store         # 全局状态管理
+  │   ├── styles        # styles
+  │   ├── utils         # 工具
+  │   ├── views         # 页面
+  │   │   ├── system    # 系统页面
+  │   │   └── template  # 模板
+  │   ├── .env.*        # 环境变量
+  │   ├── App.vue
+  │   ├── main.js
+  │   └── permission.ts # 路由拦截
+  ├── .browserslistrc   # 要兼容的浏览器
+  ├── .eslintignore     # eslint 忽略文件
+  ├── .eslintrc.js      # eslint 配置文件
+  ├── .gitignore        # git 忽略文件
+  ├── babel.config.js   # bable 配置文件
+  ├── jsconfig.json     # js 配置文件
+  ├── package.json      # 依赖包
+  ├── vue.config.js     # vue 配置文件
+  └── windi.config.js   # windicss 配置
 ```
 
-- Installation dependencies
+## 布局
 
-```bash
-cd vue-element-plus-admin
+> 介绍
+  
+  1. 框架支持多种布局
+  2. 内置布局 3 种, pc布局, 顶部布局, 主副双菜单布局
+  3. 如果改变布局,可通过提供的多种的组件,组合其他的新布局
+  
+## 路由
 
-pnpm install
+> 功能
 
-```
+* 除了基础路由外,其他路由都是动态添加
+* 动态添加支持两种方式
+  1. 在本地创建路由,添加后,可以通过路由白名单形式,过滤路由
+  2. 后端权限过滤后的路由
 
-- run
+> 配置
 
-```bash
-pnpm run dev
-```
+  路由的配置地址 /src/router/json
 
-- build
+> 细节
 
-```bash
-pnpm run build:pro
-```
+  1. '/' 代表当前是一个全新的路由, 而不是当前的子路由
+  2. 因为采用的都是动态路由,所以`前端本身是没有路由信息的`,但是为了解决开发需要路由的问题, 使用 mock 接口对/src/router/json文件夹下的所有json,进行加载
 
-## Change Log
+## 状态管理
 
-[CHANGELOG](./CHANGELOG.md)
+  使用 pinia 存储全局组件状态,使用 pinia-plugin-persist 缓存处理全局状态,避免页面刷新数据不存在问题
 
-## How to contribute
+## 环境变量
 
-You can [Raise an issue](https://github.com/kailong321200875/vue-element-plus-admin/issues/new) Or submit a Pull Request.
+  环境类别: development (开发)  uat(测试) gray(灰度)  production (生产)  
 
-**Pull Request:**
+## 全局自定义插件
 
-1. Fork code
-2. Create your own branch: `git checkout -b feat/xxxx`
-3. Submit your changes: `git commit -am 'feat(function): add xxxxx'`
-4. Push your branch: `git push origin feat/xxxx`
-5. submit `pull request`
+> 交互
 
-## Git Contribution submission specification
+  对toast,loading,alert,confirmBox 进行了二次封装, 避免重复调用问题,全局进行管理
 
-- `feat` New features
-- `fix` Fix bugs
-- `docs` document
-- `style` Format and style (changes that do not affect code operation)
-- `refactor` Refactor
-- `perf` Optimize related, such as improving performance and experience
-- `test` Add test
-- `build` Compilation related modifications, changes to project construction or dependencies
-- `ci` Continuous integration modification
-- `chore` Changes in the construction process or auxiliary tools
-- `revert` Rollback to previous version
-- `workflow` Workflow improvement
-- `mod` Uncertain modification classification
-- `wip` Under development
-- `types` type
+> 存储
 
-## Browser support
+  使用 web-storage-cache ,进行存储处理, 默认存储地址 localStorage  
+  ***对于 localStorage 和 eventBus 的全局命名必须在 config/constant 中声明**
 
-The `Chrome 80+` browser is recommended for local development
+> http 请求
 
-Support modern browsers, not IE
+  1. 使用 axios 二次封装 http 请求
+  2. 增加请求 loading 加载状态
+  3. 对于异常状态进行处理 { 406(账户锁定) 404(请求不存在), 403(未注册), 402(验证失败), 401(登陆失效), 50*(服务端报错)}
+  4. 请求可自定义配置,请求内容(尽量查看 request.js 后在做处理)
 
-| [<img src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/archive/internet-explorer_9-11/internet-explorer_9-11_48x48.png" alt=" Edge" width="24px" height="24px" />](http://godban.github.io/browsers-support-badges/)</br>IE | [<img src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/edge/edge_48x48.png" alt=" Edge" width="24px" height="24px" />](http://godban.github.io/browsers-support-badges/)</br>Edge | [<img src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/firefox/firefox_48x48.png" alt="Firefox" width="24px" height="24px" />](http://godban.github.io/browsers-support-badges/)</br>Firefox | [<img src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/chrome/chrome_48x48.png" alt="Chrome" width="24px" height="24px" />](http://godban.github.io/browsers-support-badges/)</br>Chrome | [<img src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/safari/safari_48x48.png" alt="Safari" width="24px" height="24px" />](http://godban.github.io/browsers-support-badges/)</br>Safari |
-| :-: | :-: | :-: | :-: | :-: |
-| not support | last 2 versions | last 2 versions | last 2 versions | last 2 versions |
+> eventBus
 
-## License
+  vue3 移除 eventBus, 但本项目提供 eventBus 功能
 
-[MIT](./LICENSE)
+  ```js
+    this.g_busEvent.on('test', () => {
+      console.log('监听 test')
+    })
+    this.g_busEvent.emit('test') // 触发 test
+    this.g_busEvent.off('test')  // 移除 test
+  ```
 
-## Collaborators
+## mock
 
-<!-- readme: collaborators -start -->
-<table>
-<tr>
-    <td align="center">
-        <a href="https://github.com/niyg">
-            <img src="https://avatars.githubusercontent.com/u/14817820?v=4" width="100;" alt="niyg"/>
-            <br />
-            <sub><b>福州-大雨</b></sub>
-        </a>
-    </td>
-    <td align="center">
-        <a href="https://github.com/git-Where">
-            <img src="https://avatars.githubusercontent.com/u/16344566?v=4" width="100;" alt="git-Where"/>
-            <br />
-            <sub><b>葉家男孩</b></sub>
-        </a>
-    </td>
-    <td align="center">
-        <a href="https://github.com/z6w6j6">
-            <img src="https://avatars.githubusercontent.com/u/23661303?v=4" width="100;" alt="z6w6j6"/>
-            <br />
-            <sub><b>Z6w6j6</b></sub>
-        </a>
-    </td>
-    <td align="center">
-        <a href="https://github.com/kailong321200875">
-            <img src="https://avatars.githubusercontent.com/u/32283845?v=4" width="100;" alt="kailong321200875"/>
-            <br />
-            <sub><b>Archer</b></sub>
-        </a>
-    </td></tr>
-</table>
-<!-- readme: collaborators -end -->
+> 功能
 
-## Contributors
+  1. 支持 JSON, js 类型mock
+  2. 配置简单
 
-<!-- readme: contributors -start -->
-<table>
-<tr>
-    <td align="center">
-        <a href="https://github.com/kailong321200875">
-            <img src="https://avatars.githubusercontent.com/u/32283845?v=4" width="100;" alt="kailong321200875"/>
-            <br />
-            <sub><b>Archer</b></sub>
-        </a>
-    </td>
-    <td align="center">
-        <a href="https://github.com/kailong502431556">
-            <img src="https://avatars.githubusercontent.com/u/30221169?v=4" width="100;" alt="kailong502431556"/>
-            <br />
-            <sub><b>Kailong502431556</b></sub>
-        </a>
-    </td>
-    <td align="center">
-        <a href="https://github.com/snowords">
-            <img src="https://avatars.githubusercontent.com/u/22708432?v=4" width="100;" alt="snowords"/>
-            <br />
-            <sub><b>Snoword</b></sub>
-        </a>
-    </td>
-    <td align="center">
-        <a href="https://github.com/huanghong1125">
-            <img src="https://avatars.githubusercontent.com/u/12794817?v=4" width="100;" alt="huanghong1125"/>
-            <br />
-            <sub><b>Huanghong</b></sub>
-        </a>
-    </td>
-    <td align="center">
-        <a href="https://github.com/amifed">
-            <img src="https://avatars.githubusercontent.com/u/36906371?v=4" width="100;" alt="amifed"/>
-            <br />
-            <sub><b>Yangyu</b></sub>
-        </a>
-    </td>
-    <td align="center">
-        <a href="https://github.com/WuYihui">
-            <img src="https://avatars.githubusercontent.com/u/29938095?v=4" width="100;" alt="WuYihui"/>
-            <br />
-            <sub><b>WuYihui</b></sub>
-        </a>
-    </td></tr>
-<tr>
-    <td align="center">
-        <a href="https://github.com/xiterjia">
-            <img src="https://avatars.githubusercontent.com/u/3360879?v=4" width="100;" alt="xiterjia"/>
-            <br />
-            <sub><b>Xiterjia</b></sub>
-        </a>
-    </td>
-    <td align="center">
-        <a href="https://github.com/z6w6j6">
-            <img src="https://avatars.githubusercontent.com/u/23661303?v=4" width="100;" alt="z6w6j6"/>
-            <br />
-            <sub><b>Z6w6j6</b></sub>
-        </a>
-    </td></tr>
-</table>
-<!-- readme: contributors -end -->
+> 怎么使用mock?
+
+  在 mock 文件夹内创建文件  
+  例如: 我创建了 `文件夹 auth-tree 和 index.json`  
+  请求路径 `hhttp://localhost:8080/mock/auth-tree/index`
+
+> 创建 json 文件
+
+  默认是 get 请求
+
+> 创建 js 文件
+
+  1. 直接导出函数, 默认是 get 请求
+  2. 导出对象, 可配置 methods(请求方式)
+
+> 怎么获取请求的参数?
+
+  现支持 get 请求获取参数,在导出的函数中, 第一个参数是一个 request, 可 request.query 获取
+
+> 注意事项
+
+1. 每次更改mock, 都要重启测试服务
+2. 默认请求类型是 get
+3. 只在开发环境下使用
+4. 不采用 mock.js 的原因是本地开发看不到请求参数和响应结果
+
+## 图标库
+
+使用类型传入,element字符串
+
+参考文档: <https://icon-sets.iconify.design/ep/>
+
+## style
+
+ 1. 支持 less
+ 2. 支持 windicss 通过 class 进行布局
+
+windicss 参考文档: <https://windicss.org/utilities/layout/tables.html>
+
+## 问题
+
+1. 面包屑在一个路由被隐藏时,可能有问题
+2. 暂不能使用 Iconify 图标, Iconify 在cli中无法动态生成图标
+3. 顶部布局时,当内容超过appview 容器高度时,会发生内容截取

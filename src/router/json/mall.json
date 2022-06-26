@@ -1,0 +1,27 @@
+{
+  "path": "/mall",
+  "component": "&Layout",
+  "name": "Mall",
+  "redirect": "/mall/order",
+  "meta": {
+    "title": "商品中心"
+  },
+  "children": [
+    {
+      "path": "order",
+      "component": "/mall/order/index.vue",
+      "name": "MallOrder",
+      "meta": {
+        "title": "订单"
+      }
+    },
+    {
+      "path": "shop",
+      "component": "/mall/shop/index.vue",
+      "name": "MallShop",
+      "meta": {
+        "title": "商品"
+      }
+    }
+  ]
+}

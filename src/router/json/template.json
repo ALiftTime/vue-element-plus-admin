@@ -1,0 +1,89 @@
+{
+  "path": "/template",
+  "component": "&Layout",
+  "name": "Template",
+  "redirect": "/template/emtryTest",
+  "meta": {
+    "title": "模板中心",
+    "icon": "list"
+  },
+  "children": [
+    {
+      "path": "emtryTest",
+      "component": "/template/emtryTest/index.vue",
+      "name": "EmtryTest",
+      "meta": {
+        "title": "test页面",
+        "hidden": true
+      }
+    }, {
+      "path": "level",
+      "component": "#",
+      "name": "Level",
+      "redirect": "/template/level/menu1/menu1-1/menu1-1-1",
+      "meta": {
+        "title": "多级菜单",
+        "icon": "list"
+      },
+      "children": [
+        {
+          "path": "menu1",
+          "name": "Menu1",
+          "component": "#",
+          "redirect": "/template/level/menu1/menu1-1/menu1-1-1",
+          "meta": {
+            "title": "一级菜单"
+          },
+          "children": [
+            {
+              "path": "menu1-1",
+              "name": "Menu11",
+              "component": "#",
+              "meta": {
+                "title": "1-1级菜单",
+                "alwaysShow": false ,
+                "notes": "根路径不能配置这个 alwaysShow"
+              },
+              "children": [
+                {
+                  "path": "menu1-1-1",
+                  "component": "/template/level/menu1/menu1-1/menu1-1-1.vue",
+                  "name": "Menu111",
+                  "meta": {
+                    "title": "1-1-1级菜单",
+                    "followRoute": "/level/menu1/menu1-1/menu1-1-1"
+                  }
+                }
+              ]
+            },
+            {
+              "path": "menu1-2",
+              "component": "/template/level/menu1/menu1-2.vue",
+              "name": "Menu12",
+              "meta": {
+                "title": "1-2级菜单"
+              }
+            },
+            {
+              "path": "menu1-3",
+              "component": "/template/level/menu1/menu1-3.vue",
+              "name": "Menu13",
+              "meta": {
+                "title": "1-3级菜单"
+              }
+            }
+          ]
+        },
+        {
+          "path": "menu2",
+          "component": "/template/level/menu2.vue",
+          "name": "Menu2",
+          "meta": {
+            "title": "二级菜单",
+            "notes": "不填 meta 会出现很多报错,需要校验"
+          }
+        }
+      ]
+    }
+  ]
+}

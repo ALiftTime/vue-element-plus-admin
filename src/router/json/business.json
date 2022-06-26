@@ -1,0 +1,19 @@
+{
+  "path": "/business",
+  "component": "&Layout",
+  "name": "Business",
+  "redirect": "/business/index",
+  "meta": {
+    "title": "商家中心"
+  },
+  "children": [
+    {
+      "path": "index",
+      "component": "/business/index/index.vue",
+      "name": "BusinessIndex",
+      "meta": {
+        "title": "首页"
+      }
+    }
+  ]
+}
